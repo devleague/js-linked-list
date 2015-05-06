@@ -90,6 +90,7 @@ describe('Linked List Generator', function() {
     beforeEach(function () {
       newLinkedListA = linkedListGenerator();
       newLinkedListB = linkedListGenerator();
+      newNodeA = newLinkedList.add('http://slashdot.org');
     });
 
     describe('should return a new node object', function () {
@@ -100,18 +101,26 @@ describe('Linked List Generator', function() {
         expect(newNodeA.next).to.be.defined;
         expect(newNodeA.next).to.be.null;
       });
+      it('should return a new node object', function () {
+        expect(newNodeA).to.not.be.undefined;
+        expect(newNodeA).to.be.an('object');
+      });
     });
-    it('should return a new node object', function () {
-      newNodeA = newLinkedList.add('http://slashdot.org');
-      expect(newNodeA).to.not.be.undefined;
-      expect(newNodeA).to.be.an('object');
+    describe('should add new nodes', function () {
+      it('`head` and `tail` should reference the same node object when adding to an empty list', function () {
+        expect(newLinkedListB.head).to.be.null;
+        expect(newLinkedListB.tail).to.be.null;
+        newLinkedListB.add('http://devleague.com');
+        expect(newLinkedListB.head).to.be.an('object');
+        expect(newLinkedListB.tail).to.be.an('object');
+        expect(newLinkedListB.head).to.eql({value: 'http://devleague.com', next: null });
+        expect(newLinkedListB.tail).to.eql({value: 'http://devleague.com', next: null });
+      });
     });
-    it('should add a new node to an empty linked list', function () {
-      expect(newLinkedListB.head).to.be.null;
-      expect(newLinkedListB.tail).to.be.null;
-      // console.log(newLinkedListB);
-      newLinkedListB.add('http://devleague.com');
-      expect(newLinkedListB.head).to.be.an('object');
+    describe('should add more nodes', function () {
+      it('`tail` should reference the most recently added node', function () {
+
+      });
     });
   });
 
