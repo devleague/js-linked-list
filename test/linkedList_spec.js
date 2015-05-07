@@ -195,9 +195,77 @@ describe('Linked List Generator', function() {
     });
   });
 
-  describe.skip('`get` method', function () {
+  describe('`get` method', function () {
     var urlList, bookList;
 
+    beforeEach(function () {
+      urlList = linkedListGenerator();
+      bookList = linkedListGenerator();
+
+      var urlArr = [
+        'news.ycombinator.com',
+        'mozilla.com',
+        'eff.org',
+        'icann.org'
+      ];
+
+      var bookArr = [
+        'Ready Player One',
+        '1982',
+        'Neuromancer',
+        'Snow Crash'
+      ];
+
+      urlArr.forEach(function(url) {
+        urlList.add(url);
+      });
+      bookArr.forEach(function(book) {
+        bookList.add(book);
+      });
+    });
+    describe('takes an argument', function () {
+      it('should find a node by it\'s index in the Linked List', function () {
+        // urlList Tests
+        var fetchedNode = urlList.get(0);
+        expect(fetchedNode.value).to.equal('news.ycombinator.com');
+        expect(fetchedNode.next).to.be.an('object');
+        expect(fetchedNode.next.value).to.equal('mozilla.com');
+
+        fetchedNode = urlList.get(1);
+        expect(fetchedNode.value).to.equal('mozilla.com');
+        expect(fetchedNode.next).to.be.an('object');
+        expect(fetchedNode.next.value).to.equal('eff.org');
+
+        fetchedNode = urlList.get(2);
+        expect(fetchedNode.value).to.equal('eff.org');
+        expect(fetchedNode.next).to.be.an('object');
+        expect(fetchedNode.next.value).to.equal('icann.org');
+
+        fetchedNode = urlList.get(3);
+        expect(fetchedNode.value).to.equal('icann.org');
+        expect(fetchedNode.next).to.be.null;
+
+        // bookList Tests
+        var fetchedNode = bookList.get(0);
+        expect(fetchedNode.value).to.equal('Ready Player One');
+        expect(fetchedNode.next).to.be.an('object');
+        expect(fetchedNode.next.value).to.equal('1982');
+
+        fetchedNode = bookList.get(1);
+        expect(fetchedNode.value).to.equal('1982');
+        expect(fetchedNode.next).to.be.an('object');
+        expect(fetchedNode.next.value).to.equal('Neuromancer');
+
+        fetchedNode = bookList.get(2);
+        expect(fetchedNode.value).to.equal('Neuromancer');
+        expect(fetchedNode.next).to.be.an('object');
+        expect(fetchedNode.next.value).to.equal('Snow Crash');
+
+        fetchedNode = bookList.get(3);
+        expect(fetchedNode.value).to.equal('Snow Crash');
+        expect(fetchedNode.next).to.be.null;
+      });
+    });
   });
 
   describe.skip('`remove` method', function () {
