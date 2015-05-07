@@ -18,8 +18,8 @@ var expect = chai.expect
   ;
 
 describe('Linked List Generator', function() {
-  var sandbox;
-  var baseLinkedList = {
+  var sandbox
+    , baseLinkedList = {
     head: null,
     tail: null,
     add: function(){},
@@ -29,20 +29,6 @@ describe('Linked List Generator', function() {
 
   var newLinkedList
     , linkedListGenerator = GLOBAL.linkedListGenerator;
-  // beforeEach(function() {
-
-  //   // create a sandbox
-  //   sandbox = sinon.sandbox.create();
-
-  //   // stub some console methods
-  //   sandbox.stub(console, 'log');
-  //   sandbox.stub(console, 'error');
-  // });
-
-  // afterEach(function() {
-  //   // restore the environment as it was before
-  //   sandbox.restore();
-  // });
 
   it('should be a function', function () {
     expect(linkedListGenerator).to.exist;
@@ -114,10 +100,10 @@ describe('Linked List Generator', function() {
     var newNodeA, newNodeB, newNodeC;
 
     beforeEach(function () {
-      newLinkedListA = linkedListGenerator();
-      newLinkedListB = linkedListGenerator();
-      newLinkedListC = linkedListGenerator();
-      newNodeA = newLinkedList.add('http://slashdot.org');
+      newLinkedListA = linkedListGenerator(); // return new node
+      newLinkedListB = linkedListGenerator(); // for `head` and `tail`
+      newLinkedListC = linkedListGenerator(); // for `tail`
+      newNodeA = newLinkedListA.add('http://slashdot.org');
     });
 
     describe('should return a new node object', function () {
@@ -204,7 +190,7 @@ describe('Linked List Generator', function() {
 
       var urlArr = [
         'news.ycombinator.com',
-        'mozilla.com',
+        'mozilla.org',
         'eff.org',
         'icann.org'
       ];
@@ -223,16 +209,17 @@ describe('Linked List Generator', function() {
         bookList.add(book);
       });
     });
+
     describe('takes an argument', function () {
       it('should find a node by it\'s index in the Linked List', function () {
         // urlList Tests
         var fetchedNode = urlList.get(0);
         expect(fetchedNode.value).to.equal('news.ycombinator.com');
         expect(fetchedNode.next).to.be.an('object');
-        expect(fetchedNode.next.value).to.equal('mozilla.com');
+        expect(fetchedNode.next.value).to.equal('mozilla.org');
 
         fetchedNode = urlList.get(1);
-        expect(fetchedNode.value).to.equal('mozilla.com');
+        expect(fetchedNode.value).to.equal('mozilla.org');
         expect(fetchedNode.next).to.be.an('object');
         expect(fetchedNode.next.value).to.equal('eff.org');
 
@@ -244,6 +231,21 @@ describe('Linked List Generator', function() {
         fetchedNode = urlList.get(3);
         expect(fetchedNode.value).to.equal('icann.org');
         expect(fetchedNode.next).to.be.null;
+
+        // deep check
+        expect(urlList.getHead()).to.deep.equal({
+          value: 'news.ycombinator.com',
+          next: {
+            value: 'mozilla.org',
+            next: {
+              value: 'eff.org',
+              next: {
+                value: 'icann.org',
+                next: null
+              }
+            }
+          }
+        });
 
         // bookList Tests
         var fetchedNode = bookList.get(0);
@@ -264,12 +266,102 @@ describe('Linked List Generator', function() {
         fetchedNode = bookList.get(3);
         expect(fetchedNode.value).to.equal('Snow Crash');
         expect(fetchedNode.next).to.be.null;
+
+        // deep check
+        expect(bookList.getHead()).to.deep.equal({
+          value: 'Ready Player One',
+          next: {
+            value: '1982',
+            next: {
+              value: 'Neuromancer',
+              next: {
+                value: 'Snow Crash',
+                next: null
+              }
+            }
+          }
+        });
+      });
+      it('should return `false` if no node is found', function () {
+        expect(urlList.get(4)).to.be.false;
+        expect(urlList.get(5)).to.be.false;
+        expect(bookList.get(4)).to.be.false;
+        expect(bookList.get(5)).to.be.false;
       });
     });
   });
 
-  describe.skip('`remove` method', function () {
+  describe('`remove` method', function () {
+    var urlList, bookList;
 
+    beforeEach(function () {
+      urlList = linkedListGenerator();
+      bookList = linkedListGenerator();
+
+      var urlArr = [
+        'news.ycombinator.com',
+        'mozilla.org',
+        'eff.org',
+        'icann.org'
+      ];
+
+      var bookArr = [
+        'Ready Player One',
+        '1982',
+        'Neuromancer',
+        'Snow Crash'
+      ];
+
+      urlArr.forEach(function(url) {
+        urlList.add(url);
+      });
+      bookArr.forEach(function(book) {
+        bookList.add(book);
+      });
+    });
+
+    describe('takes an argument', function () {
+      it('should remove a node by it\'s index in the Linked List', function () {
+        // remove middle node
+        urlList.remove(2);
+        // retrieve new node at position 2
+        var newNodeAtPosition = urlList.get(2);
+        expect(newNodeAtPosition.value).to.equal('icann.org');
+        expect(newNodeAtPosition.next).to.be.null;
+        // deep check
+        expect(urlList.getHead()).to.deep.equal({
+          value: 'news.ycombinator.com',
+          next: {
+            value: 'mozilla.org',
+            next: {
+              value: 'icann.org',
+              next: null
+            }
+          }
+        });
+
+        // remove last node
+        urlList.remove(2);
+        // retrieve new node at position 2
+        newNodeAtPosition = urlList.get(2);
+        // should not exist!
+        expect(newNodeAtPosition).to.be.false;
+        // deep check
+        expect(urlList.getHead()).to.deep.equal({
+          value: 'news.ycombinator.com',
+          next: {
+            value: 'mozilla.org',
+            next: null
+          }
+        });
+      });
+      it('should return `false` if a node cannot be found to be removed', function () {
+        expect(urlList.remove(9)).to.be.false;
+        expect(urlList.remove(4)).to.be.false;
+        expect(bookList.remove(4)).to.be.false;
+        expect(bookList.remove(6)).to.be.false;
+      });
+    });
   });
 
   describe.skip('`insert` method', function () {
