@@ -133,39 +133,46 @@ describe('Linked List Generator', function() {
         expect(newNodeA).to.be.an('object');
       });
     });
+
     describe('should add new nodes', function () {
       it('`head` and `tail` should reference the same node object when adding to an empty list', function () {
         // add a new node!
         newLinkedListB.add('http://devleague.com');
-        expect(newLinkedListB.getHead()).to.eql({
+        expect(newLinkedListB.getHead()).to.deep.equal({
           value: 'http://devleague.com',
           next: null
         });
-        expect(newLinkedListB.getTail()).to.eql({
+        expect(newLinkedListB.getTail()).to.deep.equal({
           value: 'http://devleague.com',
           next: null
         });
       });
     });
+
     describe('should add more nodes', function () {
       it('`tail` should reference the most recently added node', function () {
+        // add new nodes
         newLinkedListC.add('http://eff.org')
         newLinkedListC.add('http://devleague.com');
-        expect(newLinkedListC.getHead()).to.eql({
+
+        // tests!
+        expect(newLinkedListC.getHead()).to.deep.equal({
           value: 'http://eff.org',
           next: {
             value: 'http://devleague.com',
             next: null
           }
         });
-        expect(newLinkedListC.getTail()).to.eql({
+        expect(newLinkedListC.getTail()).to.deep.equal({
           value: 'http://devleague.com',
           next: null
         });
 
+        // add another node
         newLinkedListC.add('http://xkcd.org');
 
-        expect(newLinkedListC.getHead()).to.eql({
+        // test!
+        expect(newLinkedListC.getHead()).to.deep.equal({
           value: 'http://eff.org',
           next: {
             value: 'http://devleague.com',
@@ -175,7 +182,7 @@ describe('Linked List Generator', function() {
             }
           }
         });
-        expect(newLinkedListC.getTail()).to.eql({
+        expect(newLinkedListC.getTail()).to.deep.equal({
           value: 'http://xkcd.org',
           next: null
         });
