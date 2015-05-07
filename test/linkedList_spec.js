@@ -138,6 +138,8 @@ describe('Linked List Generator', function() {
       it('`head` and `tail` should reference the same node object when adding to an empty list', function () {
         // add a new node!
         newLinkedListB.add('http://devleague.com');
+
+        // test!
         expect(newLinkedListB.getHead()).to.deep.equal({
           value: 'http://devleague.com',
           next: null
@@ -146,6 +148,9 @@ describe('Linked List Generator', function() {
           value: 'http://devleague.com',
           next: null
         });
+
+        // really the same?
+        expect(newLinkedListB.getHead()).to.equal(newLinkedListB.getTail())
       });
     });
 
@@ -191,6 +196,7 @@ describe('Linked List Generator', function() {
   });
 
   describe.skip('`get` method', function () {
+    var urlList, bookList;
 
   });
 
