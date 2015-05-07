@@ -272,4 +272,7 @@ describe('Linked List Generator', function() {
 
   });
 
+  describe.skip('`insert` method', function () {
+
+  });
 });
