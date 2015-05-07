@@ -106,7 +106,7 @@ describe('Linked List Generator', function() {
       newNodeA = newLinkedListA.add('http://slashdot.org');
     });
 
-    describe('should return a new node object', function () {
+    describe('should return a node object after appending the node', function () {
       it('should have a property named `value`', function () {
         expect(newNodeA.value).to.exist;
       });
@@ -120,7 +120,7 @@ describe('Linked List Generator', function() {
       });
     });
 
-    describe('should add new nodes', function () {
+    describe('should append new nodes', function () {
       it('`head` and `tail` should reference the same node object when adding to an empty list', function () {
         // add a new node!
         newLinkedListB.add('http://devleague.com');
@@ -140,7 +140,7 @@ describe('Linked List Generator', function() {
       });
     });
 
-    describe('should add more nodes', function () {
+    describe('should append even more nodes', function () {
       it('`tail` should reference the most recently added node', function () {
         // add new nodes
         newLinkedListC.add('http://eff.org')
@@ -364,7 +364,58 @@ describe('Linked List Generator', function() {
     });
   });
 
-  describe.skip('`insert` method', function () {
+  describe('`insert` method', function () {
+    var urlList, bookList;
 
+    beforeEach(function () {
+      urlList = linkedListGenerator();
+      bookList = linkedListGenerator();
+
+      var urlArr = [
+        'news.ycombinator.com',
+        'icann.org'
+      ];
+
+      var bookArr = [
+        'Neuromancer',
+        'Snow Crash'
+      ];
+
+      urlArr.forEach(function(url) {
+        urlList.add(url);
+      });
+      bookArr.forEach(function(book) {
+        bookList.add(book);
+      });
+    });
+    describe('takes two arguments, a `value` and an `index`', function () {
+      it('should add a new node at a given index', function () {
+        // insert into second position of list
+        urlList.insert('mozilla.org', 1);
+        expect(urlList.get(0).value).to.be.equal('news.ycombinator.com');
+        expect(urlList.get(1).value).to.be.equal('mozilla.org');
+        expect(urlList.get(2).value).to.be.equal('icann.org');
+
+        // insert into beginning of list
+        bookList.insert('Ready Player One', 0);
+        expect(bookList.get(0).value).to.be.equal('Ready Player One');
+        expect(bookList.get(1).value).to.be.equal('Neuromancer');
+        expect(bookList.get(2).value).to.be.equal('Snow Crash');
+
+        urlList.insert('devleague.com', 1);
+        expect(urlList.get(0).value).to.be.equal('news.ycombinator.com');
+        expect(urlList.get(1).value).to.be.equal('devleague.com');
+        expect(urlList.get(2).value).to.be.equal('mozilla.org');
+        expect(urlList.get(3).value).to.be.equal('icann.org');
+      });
+      it('should return `false` if the index given is a value larger than the List\'s length', function () {
+        // urlList has two items, it's max index value is 1
+        // inserting to index `2` should return false
+        expect(urlList.insert('boingboing.net', 2)).to.be.false;
+
+        // test -1
+        expect(bookList.insert('The Stranger', -1)).to.be.false;
+      });
+    });
   });
 });
