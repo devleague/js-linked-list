@@ -56,19 +56,19 @@ describe('Linked List Generator', function() {
     it('should return a linked list object', function () {
       expect(newLinkedList).to.be.an('object');
     });
-    it('should have a property named `head` which has a null value', function () {
-      expect(linkedListGenerator).to.exist;
-      expect(newLinkedList.head).to.be.null;
-    });
-    it('should have a property named `tail` which has a null value', function () {
-      expect(linkedListGenerator).to.exist;
-      expect(newLinkedList.tail).to.be.null;
-    });
   });
 
   describe('Has methods available through Linked List Object', function () {
     beforeEach(function () {
       newLinkedList = linkedListGenerator();
+    });
+    it('should have a method named `getHead`', function () {
+      expect(newLinkedList.getHead).to.exist;
+      expect(newLinkedList.getHead).to.be.a('function');
+    });
+    it('should have a method named `getTail`', function () {
+      expect(newLinkedList.getTail).to.exist;
+      expect(newLinkedList.getTail).to.be.a('function');
     });
     it('should have a method named `add`', function () {
       expect(newLinkedList.add).to.exist;
@@ -82,14 +82,41 @@ describe('Linked List Generator', function() {
       expect(newLinkedList.get).to.exist;
       expect(newLinkedList.get).to.be.a('function');
     });
+    it('should have a method named `insert`', function () {
+      expect(newLinkedList.insert).to.exist;
+      expect(newLinkedList.insert).to.be.a('function');
+    });
+  });
+
+  describe('`getHead` method', function () {
+    var urlList;
+    beforeEach(function () {
+      urlList = linkedListGenerator();
+    });
+    it('should retrieve the value of the first node in a list', function () {
+      expect(urlList.getHead).to.be.a('function');
+      expect(urlList.getHead()).to.be.null;
+    });
+  });
+
+  describe('`getTail` method', function () {
+    var urlList;
+    beforeEach(function () {
+      urlList = linkedListGenerator();
+    });
+    it('should retrieve the value of the first node in a list', function () {
+      expect(urlList.getTail).to.be.a('function');
+      expect(urlList.getTail()).to.be.null;
+    });
   });
 
   describe('`add` method', function () {
-    var newNodeA, newNodeB;
+    var newNodeA, newNodeB, newNodeC;
 
     beforeEach(function () {
       newLinkedListA = linkedListGenerator();
       newLinkedListB = linkedListGenerator();
+      newLinkedListC = linkedListGenerator();
       newNodeA = newLinkedList.add('http://slashdot.org');
     });
 
@@ -108,27 +135,60 @@ describe('Linked List Generator', function() {
     });
     describe('should add new nodes', function () {
       it('`head` and `tail` should reference the same node object when adding to an empty list', function () {
-        expect(newLinkedListB.head).to.be.null;
-        expect(newLinkedListB.tail).to.be.null;
+        // add a new node!
         newLinkedListB.add('http://devleague.com');
-        expect(newLinkedListB.head).to.be.an('object');
-        expect(newLinkedListB.tail).to.be.an('object');
-        expect(newLinkedListB.head).to.eql({value: 'http://devleague.com', next: null });
-        expect(newLinkedListB.tail).to.eql({value: 'http://devleague.com', next: null });
+        expect(newLinkedListB.getHead()).to.eql({
+          value: 'http://devleague.com',
+          next: null
+        });
+        expect(newLinkedListB.getTail()).to.eql({
+          value: 'http://devleague.com',
+          next: null
+        });
       });
     });
     describe('should add more nodes', function () {
       it('`tail` should reference the most recently added node', function () {
+        newLinkedListC.add('http://eff.org')
+        newLinkedListC.add('http://devleague.com');
+        expect(newLinkedListC.getHead()).to.eql({
+          value: 'http://eff.org',
+          next: {
+            value: 'http://devleague.com',
+            next: null
+          }
+        });
+        expect(newLinkedListC.getTail()).to.eql({
+          value: 'http://devleague.com',
+          next: null
+        });
 
+        newLinkedListC.add('http://xkcd.org');
+
+        expect(newLinkedListC.getHead()).to.eql({
+          value: 'http://eff.org',
+          next: {
+            value: 'http://devleague.com',
+            next: {
+              value: 'http://xkcd.org',
+              next: null
+            }
+          }
+        });
+        expect(newLinkedListC.getTail()).to.eql({
+          value: 'http://xkcd.org',
+          next: null
+        });
       });
     });
+  });
+
+  describe.skip('`get` method', function () {
+
   });
 
   describe.skip('`remove` method', function () {
 
   });
 
-  describe.skip('`get` method', function () {
-
-  });
 });
