@@ -23,48 +23,23 @@ The last **node** in a Linked List will have a `null` value for the `next` prope
 ## Methods
 
 ### getHead()
-Returns the first node of the list
+Returns the value of the first node of the list
 
-      linkedListExample.getHead(); // returns...
-      {
-      value: 'Ready Player One',
-      next: {
-        value: '1982',
-        next: {
-          value: 'Neuromancer',
-          next: {
-            value: 'Snow Crash',
-            next: null
-          }
-        }
-      }
-    }
+      linkedListExample.getHead(); // returns 'Ready Player One'
 
 ### getTail()
 Returns the value of the last node of a list.
 
-    linkedListExample.getTail(); // returns...
-    {
-      value: 'Snow Crash',
-      next: null
-    }
-
+    linkedListExample.getTail(); // returns 'Snow Crash'
 
 ### add(Value)
 Takes in any data value and adds a new node to the end of a list. Does not return a value.
 
 
 ### get(Number)
-Takes in a Number value and searches for the **Nth node** in a list and returns a list starting with the **Nth node**.
+Takes in a Number value and searches for the **Nth node** in a list and returns it's value
 
-    linkedListExample.get(2); // returns...
-    {
-      value: 'Neuromancer',
-      next: {
-        value: 'Snow Crash',
-        next: null
-      }
-    }
+    linkedListExample.get(2); // returns 'Neuromancer'
 
 ### remove(Number)
 Takes in a Number value and searches for the Nth node in a list and removes it.
