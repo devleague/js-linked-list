@@ -1,4 +1,4 @@
-# Linked List Abstract Data Structure
+# Linked List - An Abstract Data Type
 
 We will be creating a **module** that helps us generate a **Linked List**. A linked list is a data structure that contains **nodes**. Each **node** has a `value` and a `next` property. The `value` property contains some data that a user-defined when the node was created. The `next` property points to the next **node** in the list, ergo this is how the nodes are linked.
 
