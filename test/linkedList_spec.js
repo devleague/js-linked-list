@@ -39,7 +39,7 @@ describe('Linked List Generator', function() {
     beforeEach(function () {
       newLinkedList = linkedListGenerator();
     });
-    it('should return a linked list object', function () {
+    it('should return a module object', function () {
       expect(newLinkedList).to.be.an('object');
     });
   });
