@@ -116,7 +116,7 @@ describe('Linked List Generator', function() {
       });
       it('should return a new node object', function () {
         expect(newNodeA).to.not.be.undefined;
-        expect(newNodeA).to.be.an('object');
+        expect(newNodeA).to.be.equal('http://slashdot.org');
       });
     });
 
@@ -126,14 +126,8 @@ describe('Linked List Generator', function() {
         newLinkedListB.add('http://devleague.com');
 
         // test!
-        expect(newLinkedListB.getHead()).to.deep.equal({
-          value: 'http://devleague.com',
-          next: null
-        });
-        expect(newLinkedListB.getTail()).to.deep.equal({
-          value: 'http://devleague.com',
-          next: null
-        });
+        expect(newLinkedListB.getHead()).to.equal('http://devleague.com');
+        expect(newLinkedListB.getTail()).to.equal('http://devleague.com');
 
         // really the same?
         expect(newLinkedListB.getHead()).to.equal(newLinkedListB.getTail())
@@ -147,36 +141,15 @@ describe('Linked List Generator', function() {
         newLinkedListC.add('http://devleague.com');
 
         // tests!
-        expect(newLinkedListC.getHead()).to.deep.equal({
-          value: 'http://eff.org',
-          next: {
-            value: 'http://devleague.com',
-            next: null
-          }
-        });
-        expect(newLinkedListC.getTail()).to.deep.equal({
-          value: 'http://devleague.com',
-          next: null
-        });
+        expect(newLinkedListC.getHead()).to.equal('http://eff.org');
+        expect(newLinkedListC.getTail()).to.equal('http://devleague.com');
 
         // add another node
         newLinkedListC.add('http://xkcd.org');
 
         // test!
-        expect(newLinkedListC.getHead()).to.deep.equal({
-          value: 'http://eff.org',
-          next: {
-            value: 'http://devleague.com',
-            next: {
-              value: 'http://xkcd.org',
-              next: null
-            }
-          }
-        });
-        expect(newLinkedListC.getTail()).to.deep.equal({
-          value: 'http://xkcd.org',
-          next: null
-        });
+        expect(newLinkedListC.getHead()).to.equal('http://eff.org');
+        expect(newLinkedListC.getTail()).to.equal('http://xkcd.org');
       });
     });
   });
@@ -213,74 +186,22 @@ describe('Linked List Generator', function() {
     describe('takes an argument', function () {
       it('should find a node by it\'s index in the Linked List', function () {
         // urlList Tests
-        var fetchedNode = urlList.get(0);
-        expect(fetchedNode.value).to.equal('news.ycombinator.com');
-        expect(fetchedNode.next).to.be.an('object');
-        expect(fetchedNode.next.value).to.equal('mozilla.org');
+        expect(urlList.get(0)).to.equal('news.ycombinator.com');
+        expect(urlList.get(1)).to.equal('mozilla.org');
+        expect(urlList.get(2)).to.equal('eff.org');
+        expect(urlList.get(3)).to.equal('icann.org');
 
-        fetchedNode = urlList.get(1);
-        expect(fetchedNode.value).to.equal('mozilla.org');
-        expect(fetchedNode.next).to.be.an('object');
-        expect(fetchedNode.next.value).to.equal('eff.org');
-
-        fetchedNode = urlList.get(2);
-        expect(fetchedNode.value).to.equal('eff.org');
-        expect(fetchedNode.next).to.be.an('object');
-        expect(fetchedNode.next.value).to.equal('icann.org');
-
-        fetchedNode = urlList.get(3);
-        expect(fetchedNode.value).to.equal('icann.org');
-        expect(fetchedNode.next).to.be.null;
-
-        // deep check
-        expect(urlList.getHead()).to.deep.equal({
-          value: 'news.ycombinator.com',
-          next: {
-            value: 'mozilla.org',
-            next: {
-              value: 'eff.org',
-              next: {
-                value: 'icann.org',
-                next: null
-              }
-            }
-          }
-        });
+        expect(urlList.getHead()).to.equal('news.ycombinator.com');
+        expect(urlList.getTail()).to.equal('icann.org');
 
         // bookList Tests
-        var fetchedNode = bookList.get(0);
-        expect(fetchedNode.value).to.equal('Ready Player One');
-        expect(fetchedNode.next).to.be.an('object');
-        expect(fetchedNode.next.value).to.equal('1982');
+        expect(bookList.get(0)).to.equal('Ready Player One');
+        expect(bookList.get(1)).to.equal('1982');
+        expect(bookList.get(2)).to.equal('Neuromancer');
+        expect(bookList.get(3)).to.equal('Snow Crash');
 
-        fetchedNode = bookList.get(1);
-        expect(fetchedNode.value).to.equal('1982');
-        expect(fetchedNode.next).to.be.an('object');
-        expect(fetchedNode.next.value).to.equal('Neuromancer');
-
-        fetchedNode = bookList.get(2);
-        expect(fetchedNode.value).to.equal('Neuromancer');
-        expect(fetchedNode.next).to.be.an('object');
-        expect(fetchedNode.next.value).to.equal('Snow Crash');
-
-        fetchedNode = bookList.get(3);
-        expect(fetchedNode.value).to.equal('Snow Crash');
-        expect(fetchedNode.next).to.be.null;
-
-        // deep check
-        expect(bookList.getHead()).to.deep.equal({
-          value: 'Ready Player One',
-          next: {
-            value: '1982',
-            next: {
-              value: 'Neuromancer',
-              next: {
-                value: 'Snow Crash',
-                next: null
-              }
-            }
-          }
-        });
+        expect(bookList.getHead()).to.equal('Ready Player One');
+        expect(bookList.getTail()).to.equal('Snow Crash');
       });
       it('should return `false` if no node is found', function () {
         expect(urlList.get(4)).to.be.false;
@@ -322,38 +243,25 @@ describe('Linked List Generator', function() {
 
     describe('takes an argument', function () {
       it('should remove a node by it\'s index in the Linked List', function () {
+        // urlList Tests
         // remove middle node
         urlList.remove(2);
-        // retrieve new node at position 2
-        var newNodeAtPosition = urlList.get(2);
-        expect(newNodeAtPosition.value).to.equal('icann.org');
-        expect(newNodeAtPosition.next).to.be.null;
-        // deep check
-        expect(urlList.getHead()).to.deep.equal({
-          value: 'news.ycombinator.com',
-          next: {
-            value: 'mozilla.org',
-            next: {
-              value: 'icann.org',
-              next: null
-            }
-          }
-        });
-
+        // test new node at position 2
+        expect(urlList.get(2)).to.equal('icann.org');
         // remove last node
         urlList.remove(2);
         // retrieve new node at position 2
-        newNodeAtPosition = urlList.get(2);
-        // should not exist!
-        expect(newNodeAtPosition).to.be.false;
-        // deep check
-        expect(urlList.getHead()).to.deep.equal({
-          value: 'news.ycombinator.com',
-          next: {
-            value: 'mozilla.org',
-            next: null
-          }
-        });
+        expect(urlList.get(2)).to.be.false;
+        expect(urlList.getHead()).to.equal('news.ycombinator.com');
+        expect(urlList.getTail()).to.equal('mozilla.org');
+
+        // bookList Tests
+        //remove first node
+        bookList.remove(0);
+        expect(bookList.get(0)).to.equal('1982');
+        bookList.remove(1);
+        expect(bookList.getHead()).to.equal('1982');
+        expect(bookList.getTail()).to.equal('Snow Crash');
       });
       it('should return `false` if a node cannot be found to be removed', function () {
         expect(urlList.remove(9)).to.be.false;
@@ -392,29 +300,33 @@ describe('Linked List Generator', function() {
       it('should add a new node at a given index', function () {
         // insert into second position of list
         urlList.insert('mozilla.org', 1);
-        expect(urlList.get(0).value).to.be.equal('news.ycombinator.com');
-        expect(urlList.get(1).value).to.be.equal('mozilla.org');
-        expect(urlList.get(2).value).to.be.equal('icann.org');
+        expect(urlList.get(0)).to.be.equal('news.ycombinator.com');
+        expect(urlList.get(1)).to.be.equal('mozilla.org');
+        expect(urlList.get(2)).to.be.equal('icann.org');
 
         // insert into beginning of list
         bookList.insert('Ready Player One', 0);
-        expect(bookList.get(0).value).to.be.equal('Ready Player One');
-        expect(bookList.get(1).value).to.be.equal('Neuromancer');
-        expect(bookList.get(2).value).to.be.equal('Snow Crash');
+        expect(bookList.get(0)).to.be.equal('Ready Player One');
+        expect(bookList.get(1)).to.be.equal('Neuromancer');
+        expect(bookList.get(2)).to.be.equal('Snow Crash');
 
         urlList.insert('devleague.com', 1);
-        expect(urlList.get(0).value).to.be.equal('news.ycombinator.com');
-        expect(urlList.get(1).value).to.be.equal('devleague.com');
-        expect(urlList.get(2).value).to.be.equal('mozilla.org');
-        expect(urlList.get(3).value).to.be.equal('icann.org');
+        expect(urlList.get(0)).to.be.equal('news.ycombinator.com');
+        expect(urlList.get(1)).to.be.equal('devleague.com');
+        expect(urlList.get(2)).to.be.equal('mozilla.org');
+        expect(urlList.get(3)).to.be.equal('icann.org');
       });
       it('should return `false` if the index given is a value larger than the List\'s length', function () {
         // urlList has two items, it's max index value is 1
         // inserting to index `2` should return false
         expect(urlList.insert('boingboing.net', 2)).to.be.false;
+        expect(urlList.get(0)).to.be.equal('news.ycombinator.com');
+        expect(urlList.get(1)).to.be.equal('icann.org');
 
         // test -1
         expect(bookList.insert('The Stranger', -1)).to.be.false;
+        expect(bookList.get(0)).to.be.equal('Neuromancer');
+        expect(bookList.get(1)).to.be.equal('Snow Crash');
       });
     });
   });
