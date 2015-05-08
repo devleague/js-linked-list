@@ -243,6 +243,7 @@ describe('Linked List Generator', function() {
         // test new node at position 2
         expect(urlList.get(2).value).to.equal('icann.org');
         // remove last node
+        // console.log(urlList.getHead());
         urlList.remove(2);
         // retrieve new node at position 2
         expect(urlList.get(2)).to.be.false;
@@ -256,6 +257,9 @@ describe('Linked List Generator', function() {
         bookList.remove(1);
         expect(bookList.getHead().value).to.equal('1982');
         expect(bookList.getTail().value).to.equal('Snow Crash');
+      });
+      it.skip('should return the node that was removed', function () {
+
       });
       it('should return `false` if a node cannot be found to be removed', function () {
         expect(urlList.remove(9)).to.be.false;
