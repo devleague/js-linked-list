@@ -25,28 +25,49 @@ The last **node** in a Linked List will have a `null` value for the `next` prope
 ### getHead()
 Returns the value of the first node of the list
 
-      linkedListExample.getHead(); // returns 'Ready Player One'
+    linkedListExample.getHead(); // returns a node object...
+    {
+      value: 'Ready Player One'
+      next: { ... }
+    }
 
 ### getTail()
 Returns the value of the last node of a list.
 
-    linkedListExample.getTail(); // returns 'Snow Crash'
+    linkedListExample.getTail(); // returns a node object...
+    {
+      value: 'Snow Crash',
+      next: null
+    }
 
 ### add(Value)
-Takes in any data value and adds a new node to the end of a list. Does not return a value.
+Takes in any data value and adds a new node to the end of a list. Returns the new node that was created.
 
+    linkedListExample.add('The Stranger'); // returns the newly created and appended node...
+    {
+      value: 'The Stranger',
+      next: null
+    }
 
 ### get(Number)
 Takes in a Number value and searches for the **Nth node** in a list and returns it's value
 
-    linkedListExample.get(2); // returns 'Neuromancer'
+    linkedListExample.get(2); // returns a node object...
+    {
+      value: 'Neuromancer',
+      next: { ... }
+    }
 
 ### remove(Number)
 Takes in a Number value and searches for the Nth node in a list and removes it.
 
 `.remove()` returns the value of the node which was removed.
 
-    linkedListExample.remove(2); // returns 'Neuromancer'
+    linkedListExample.remove(3); // returns a node object...
+    {
+      value: 'Snow Crash',
+      next: null
+    }
 
 ### insert(Value, Number)
 Inserts the specified element at the specified position in this list. Shifts the element currently at that position (if any) and any subsequent elements to the right.
