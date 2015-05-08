@@ -106,20 +106,6 @@ describe('Linked List Generator', function() {
       newNodeA = newLinkedListA.add('http://slashdot.org');
     });
 
-    describe('should return a node object after appending the node', function () {
-      it('should have a property named `value`', function () {
-        expect(newNodeA.value).to.exist;
-      });
-      it('should have a property named `next`', function () {
-        expect(newNodeA.next).to.be.defined;
-        expect(newNodeA.next).to.be.null;
-      });
-      it('should return a new node object', function () {
-        expect(newNodeA).to.not.be.undefined;
-        expect(newNodeA).to.be.equal('http://slashdot.org');
-      });
-    });
-
     describe('should append new nodes', function () {
       it('`head` and `tail` should reference the same node object when adding to an empty list', function () {
         // add a new node!
