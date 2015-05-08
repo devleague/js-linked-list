@@ -198,10 +198,10 @@ describe('Linked List Generator', function() {
         expect(bookList.getTail().value).to.equal('Snow Crash');
       });
       it('should return `false` if no node is found', function () {
-        expect(urlList.get(4).value).to.be.false;
-        expect(urlList.get(5).value).to.be.false;
-        expect(bookList.get(4).value).to.be.false;
-        expect(bookList.get(5).value).to.be.false;
+        expect(urlList.get(4)).to.be.false;
+        expect(urlList.get(5)).to.be.false;
+        expect(bookList.get(4)).to.be.false;
+        expect(bookList.get(5)).to.be.false;
       });
     });
   });
