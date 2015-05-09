@@ -59,15 +59,9 @@ Takes in a Number value and searches for the **Nth node** in a list and returns 
     }
 
 ### remove(Number)
-Takes in a Number value and searches for the Nth node in a list and removes it.
+Takes in a Number value and searches for the Nth node removes it from the list.
 
-`.remove()` returns the value of the node which was removed.
-
-    linkedListExample.remove(3); // returns a node object...
-    {
-      value: 'Snow Crash',
-      next: null
-    }
+    linkedListExample.remove(3);
 
 ### insert(Value, Number)
 Inserts the specified element at the specified position in this list. Shifts the element currently at that position (if any) and any subsequent elements to the right.
