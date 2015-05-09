@@ -240,11 +240,13 @@ describe('Linked List Generator', function() {
         // urlList Tests
         // remove middle node
         urlList.remove(2);
+
         // test new node at position 2
         expect(urlList.get(2).value).to.equal('icann.org');
+
         // remove last node
-        // console.log(urlList.getHead());
         urlList.remove(2);
+
         // retrieve new node at position 2
         expect(urlList.get(2)).to.be.false;
         expect(urlList.getHead().value).to.equal('news.ycombinator.com');
