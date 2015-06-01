@@ -1,27 +1,23 @@
 var window = window || undefined;
-if (window) {
-  GLOBAL = window;
-} else {
-  var vm = require('vm')
-    , fs = require('fs')
-    , sinon = require('sinon')
-    , chai = require('chai')
-    ;
+if (!window) {
+  GLOBAL = window
+  var vm = require('vm');
+  var fs = require('fs');
+  var sinon = require('sinon');
+  var chai = require('chai');
 
   var basicsFile = fs.readFileSync(process.cwd() + '/linkedList.js', { encoding: 'UTF-8' });
+
   // file runs in VM and it's contents has access to GLOBAL
   vm.runInThisContext(basicsFile);
 }
 
-var expect = chai.expect
-  , should = chai.should()
-  ;
+var expect = chai.expect;
+var should = chai.should();
 
 describe('Linked List Generator', function() {
   var sandbox;
-
-  var newLinkedList
-    , linkedListGenerator = GLOBAL.linkedListGenerator;
+  var newLinkedList = linkedListGenerator;
 
   it('should be a function', function () {
     expect(linkedListGenerator).to.exist;
@@ -69,6 +65,7 @@ describe('Linked List Generator', function() {
 
   describe('`getHead` method', function () {
     var urlList;
+
     beforeEach(function () {
       urlList = linkedListGenerator();
     });
@@ -80,6 +77,7 @@ describe('Linked List Generator', function() {
 
   describe('`getTail` method', function () {
     var urlList;
+
     beforeEach(function () {
       urlList = linkedListGenerator();
     });
