@@ -315,13 +315,13 @@ describe('Linked List Generator', function() {
         expect(urlList.get(3).value).to.be.equal('icann.org');
       });
       it('should return `false` if the index given is a value larger than the List\'s length', function () {
+
         // urlList has two items, it's max index value is 1
-        
-        urlList.insert('boingboing.net', 2)
+        expect(urlList.insert('boingboing.net', 2)).to.be.false;
         expect(urlList.getHead().value).to.be.equal('news.ycombinator.com');
         expect(urlList.get(0).value).to.be.equal('news.ycombinator.com');
         expect(urlList.get(1).value).to.be.equal('icann.org');
-        expect(urlList.getTail().value).to.be.equal('boingboing.net');
+        expect(urlList.getTail().value).to.be.equal('icann.org');
 
         // test -1
         expect(bookList.insert('The Stranger', -1)).to.be.false;
