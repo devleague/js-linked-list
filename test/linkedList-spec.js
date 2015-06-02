@@ -150,29 +150,27 @@ describe('Linked List Generator', function() {
     var urlList, bookList;
 
     beforeEach(function () {
-      urlList = linkedListGenerator();
-      bookList = linkedListGenerator();
-
-      var urlArr = [
+      
+      urlList = [
         'news.ycombinator.com',
         'mozilla.org',
         'eff.org',
         'icann.org'
-      ];
+      ].reduce(function (prev, cur) {
+        prev.add(cur);
+        return prev;
+      }, linkedListGenerator());
 
-      var bookArr = [
+      bookList = [
         'Ready Player One',
         '1982',
         'Neuromancer',
         'Snow Crash'
-      ];
+      ].reduce(function (prev, cur) {
+        prev.add(cur);
+        return prev;
+      }, linkedListGenerator());
 
-      urlArr.forEach(function(url) {
-        urlList.add(url);
-      });
-      bookArr.forEach(function(book) {
-        bookList.add(book);
-      });
     });
 
     describe('takes an argument', function () {
@@ -208,29 +206,27 @@ describe('Linked List Generator', function() {
     var urlList, bookList;
 
     beforeEach(function () {
-      urlList = linkedListGenerator();
-      bookList = linkedListGenerator();
 
-      var urlArr = [
+      urlList = [
         'news.ycombinator.com',
         'mozilla.org',
         'eff.org',
         'icann.org'
-      ];
+      ].reduce(function (prev, cur) {
+        prev.add(cur);
+        return prev;
+      }, linkedListGenerator());
 
-      var bookArr = [
+      bookList = [
         'Ready Player One',
         '1982',
         'Neuromancer',
         'Snow Crash'
-      ];
+      ].reduce(function (prev, cur) {
+        prev.add(cur);
+        return prev;
+      }, linkedListGenerator());
 
-      urlArr.forEach(function(url) {
-        urlList.add(url);
-      });
-      bookArr.forEach(function(book) {
-        bookList.add(book);
-      });
     });
 
     describe('takes an argument', function () {
@@ -238,7 +234,7 @@ describe('Linked List Generator', function() {
         // urlList Tests
         // remove middle node
         urlList.remove(2);
-
+        
         // test new node at position 2
         expect(urlList.get(2).value).to.equal('icann.org');
 
@@ -274,25 +270,23 @@ describe('Linked List Generator', function() {
     var urlList, bookList;
 
     beforeEach(function () {
-      urlList = linkedListGenerator();
-      bookList = linkedListGenerator();
 
-      var urlArr = [
+      urlList = [
         'news.ycombinator.com',
         'icann.org'
-      ];
+      ].reduce(function (prev, cur) {
+        prev.add(cur);
+        return prev;
+      }, linkedListGenerator());
 
-      var bookArr = [
+      bookList = [
         'Neuromancer',
         'Snow Crash'
-      ];
+      ].reduce(function (prev, cur) {
+        prev.add(cur);
+        return prev;
+      }, linkedListGenerator());
 
-      urlArr.forEach(function(url) {
-        urlList.add(url);
-      });
-      bookArr.forEach(function(book) {
-        bookList.add(book);
-      });
     });
     describe('takes two arguments, a `value` and an `index`', function () {
       it('should add a new node at a given index', function () {
