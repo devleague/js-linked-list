@@ -258,9 +258,6 @@ describe('Linked List Generator', function() {
         expect(bookList.getHead().value).to.equal('1982');
         expect(bookList.getTail().value).to.equal('Snow Crash');
       });
-      it.skip('should return the node that was removed', function () {
-
-      });
       it('should return `false` if a node cannot be found to be removed', function () {
         expect(urlList.remove(9)).to.be.false;
         expect(urlList.remove(4)).to.be.false;
