@@ -50,7 +50,7 @@ Takes in any data value and adds a new node to the end of a list. Returns the ne
     }
 
 ### get(Number)
-Takes in a Number value and searches for the **Nth node** in a list and returns it's value
+Takes in a Number value and searches for the **Nth node** in a list and returns that node
 
     linkedListExample.get(2); // returns a node object...
     {
