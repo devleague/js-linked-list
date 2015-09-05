@@ -310,13 +310,13 @@ describe('Linked List Generator', function() {
         expect(urlList.get(1).value).to.be.equal('devleague.com');
         expect(urlList.get(2).value).to.be.equal('mozilla.org');
         expect(urlList.get(3).value).to.be.equal('icann.org');
-        
+
         // insert into index `1`
         bookList.insert('The Stranger', 1);
-        expect(bookList.getHead().value).to.be.equal('Neuromancer');
-        expect(bookList.get(0).value).to.be.equal('Neuromancer');
+        expect(bookList.getHead().value).to.be.equal('Ready Player One');
+        expect(bookList.get(0).value).to.be.equal('Ready Player One');
         expect(bookList.get(1).value).to.be.equal('The Stranger');
-        expect(bookList.get(2).value).to.be.equal('Snow Crash');
+        expect(bookList.get(2).value).to.be.equal('Neuromancer');
       });
       it('should return `false` if the index given is a value larger than the List\'s length', function () {
 
