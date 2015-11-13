@@ -23,7 +23,13 @@ function linkedListGenerator(){
         value: x,
         next: null,
       };
-
+      if(head === null) {
+        head = newNode;
+        tail = newNode;
+      } else {
+        tail = newNode;
+      }
+      length ++;
       return newNode;
     },
 
@@ -32,6 +38,8 @@ function linkedListGenerator(){
     },
 
     get: function(x) {
+      for(var i = 0; i <= length; i++);
+      var listIndex = i;
     },
 
     insert: function(x, y) {
