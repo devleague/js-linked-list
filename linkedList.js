@@ -41,27 +41,23 @@ function linkedListGenerator(){
     },
 
     remove: function (index) {
-      var targetNode = this.get(index);
-      var nextNode = this.get(index + 1);
-      var previousNode = this.get(index - 1);
-      for (var i= 0; i < length; i++) {
-        
-      }
+      var targetNode = this.get (index);
+      var nextNode = this.get (index + 1);
+      var previousNode = this.get (index - 1);
+      currentNode = head;
+
+      if (index >= length) {
+        return false;
+      } 
     },
 
     get: function (index) {
       currentNode = head;
-      for (var i = 0; i < length; i++) {
-        if (index === i) {
-          return currentNode;
-        }
-        currentNode = currentNode.next;
-        if (index === i) {
-          return currentNode;
-        }
-        if (index > currentNode) {
+      for (var i = 0; i < index; i++) {
+        if (currentNode.next === null) {
           return false;
         }
+        currentNode = currentNode.next;
       }
       return currentNode;
     },
