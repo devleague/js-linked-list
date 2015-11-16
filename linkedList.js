@@ -6,49 +6,72 @@
 function linkedListGenerator(){
   var head = null;
   var tail = null;
-  var length = 0;
+  var length = null;
+  var currentNode;
 
   var newLinkedList = {
     
-    getHead: function() {
+    getHead: function () {
       return head;
     },
 
-    getTail: function() {
+    getTail: function () {
       return tail;
     },
 
-    add: function(x) {
+    add: function (index) {
       var newNode = {
-        value: x,
+        value: index,
         next: null,
+
       };
-      if(head === null) {
+      if (head === null) {
         head = newNode;
         tail = newNode;
+        length ++;
       } else {
-        tail = newNode;
-      }
+        tail.next = {
+          value: index,
+          next: null,
+        };
+      tail = tail.next;
       length ++;
+      }
       return newNode;
     },
 
-    remove: function(x) {
-
+    remove: function (index) {
+      var targetNode = this.get(index);
+      var nextNode = this.get(index + 1);
+      var previousNode = this.get(index - 1);
+      for (var i= 0; i < length; i++) {
+        
+      }
     },
 
-    get: function(x) {
-      for(var i = 0; i <= length; i++);
-      var listIndex = i;
+    get: function (index) {
+      currentNode = head;
+      for (var i = 0; i < length; i++) {
+        if (index === i) {
+          return currentNode;
+        }
+        currentNode = currentNode.next;
+        if (index === i) {
+          return currentNode;
+        }
+        if (index > currentNode) {
+          return false;
+        }
+      }
+      return currentNode;
     },
-
-    insert: function(x, y) {
+      
+    insert: function (x, y) {
 
     }
-  };
     
 
+};
 
   return newLinkedList;
-
 }
