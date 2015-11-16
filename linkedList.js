@@ -7,7 +7,7 @@
 function linkedListGenerator () {
  var head = null;
  var tail = null;
- var length = 10;
+ var length = 0;
 
 
  //private variables go here, below is public and returns public
@@ -25,52 +25,63 @@ function linkedListGenerator () {
 
    add: function (x) {
    //using if and else to check if 'head' has a value since we're creating 'nodes', else == have to recreate a node if head is null
-    if (head === null) {
     var node = {
       value: x,
       next: null
     };
-    head = node;
-    tail = node;
-    length++;
+    if (head === null) {
+      head = node;
+      tail = node;
+      length++;
+    } else {
+      tail.next = {
+        value: x,
+        next: null
+      };
+      length++;
+      tail = tail.next;
     }
-    //if if statement returns null, need to recreate a node in else statement
-    else {
-    head.next = {
-      value: x,
-      next: null
-    };
-    length++;
-    tail = head.next;
-    }
-    //why out of scope?
+    //why out of scope? had to move var node outside if
     return node;
   },
 
-   get: function (newLinkedList) {
+   get: function (index) {
 
-    for (var i=0; i < newLinkedList.length; i++) {
-      if (i === node) {
-        return node;
+    var currentNode = {
+      value: index,
+      next: null
+    };
+
+    //for loop not the best option, since don't really have an index
+    //stepping over: head.next; current.next; tail.next
+    //step1: if current exists, set it
+    //step2: determine target, e.g. if target is equal to i return current
+    if (index >= head && index <= tail) {
+      currentNode = head;
+
+      while (currentNode++ < index) {
+      currentNode = currentNode.next;
       }
-        else if (i !== node){
-         return false;
-       }
+      return currentNode.value;
+    } else {
+      return false;
       }
-     },
+   },
+
 
    remove: function () {
 
    },
-   insert: function () {
 
+   insert: function () {
+     //similar to 'add' take the current thing and add next to it
+     //use 'get ()' and minus/add to determine where to move
    },
   };
- return newLinkedList;
+   return newLinkedList;
 }
 
 
 
-// return makeList;
-// };
+
 
