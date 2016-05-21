@@ -4,21 +4,25 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
+		var head = null;
+		var tail = null;
+
+		function getHead(){
+			return head;
+		}
+
+		function getTail(){
+			return tail;
+		}
+
+		function add(Value){
+			return value;
+		}
+
 		return{
-			value:"Ready Player One",
-			next:{
-				value:"1982",
-				next:{
-					value:"Neuromancer",
-					next:{
-						value:"Snow Crash",
-						next: null
-					}
-				}
-			}
+			getHead: getHead,
+			getTail: getTail,
+			add:add,
 		};
 
-	function getHead(){
-
-	}
 }
