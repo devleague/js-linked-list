@@ -77,11 +77,36 @@ function linkedListGenerator(){
    }
  }
 
+ function insert(value, num){
+  var insert = new node();
+  insert.value = value;
+  if(num < 0)
+    return false;
+  if(num === 0){
+    insert.next = head;
+    head = insert;
+    return;
+  }
+  var item = head;
+  var gogo = null;
+
+   if(get(num) !== false){
+    item = get(num);
+    gogo = get(num - 1);
+   }
+   else
+    return false;
+  gogo.next = insert;
+  insert.next = item;
+ }
+
   var list = {
     getHead:getHead,
     getTail:getTail,
     add:add,
-    get:get
+    get:get,
+    remove:remove,
+    insert:insert
   };
 
   return list;
