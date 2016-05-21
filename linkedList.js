@@ -10,7 +10,13 @@ function linkedListGenerator(){
     this.value = null;
     this.next = null;
   };
+
+ function getHead(){
+  return head;
+ }
   var list = {
+    getHead:getHead
   };
+
   return list;
 }
