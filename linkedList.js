@@ -4,10 +4,11 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
-  var linkedList = {
-    getHead: function () {
+  var linkedList = {};
+  function getHead() {
       // body...
     }
+  return {
+    getHead: getHead
   };
-  return linkedList;
 }
