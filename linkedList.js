@@ -20,11 +20,15 @@ function linkedListGenerator(){
   function get() {
     // body...
   }
+  function insert() {
+    // body...
+  }
   return {
     getHead: getHead,
     getTail: getTail,
     add: add,
     remove: remove,
-    get: get
+    get: get,
+    insert: insert
   };
 }
