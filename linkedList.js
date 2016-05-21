@@ -5,13 +5,17 @@
  */
 var linkedListGenerator = function (){
 
-  var newLinkedList = {};
+  var newLinkedList = {
+    value: null,
+    next: null
+  };
 
   newLinkedList.getHead = function (){
-      return newLinkedList[0].value;
+    return newLinkedList.value;
   };
 
   newLinkedList.getTail = function (){
+    return newLinkedList.value;
   };
 
   newLinkedList.add = function (){
