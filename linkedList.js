@@ -48,6 +48,35 @@ function linkedListGenerator(){
   }
   return item;
  }
+
+  function remove(num){
+   if(head === null)
+    return false;
+  if(num === 0){
+    console.log(get(0));
+    var zeal = head.next;
+    head = zeal;
+    head.next = zeal.next;
+    return;
+  }
+   var item = null;
+     var gogo = null;
+   if(get(num) !== false){
+    item = get(num);
+    gogo = get(num - 1);
+   }
+   else
+    return false;
+   if(item === tail){
+     tail = gogo;
+     tail.next = null;
+   }
+   else{
+     gogo.next = item.next;
+     item.next = null;
+   }
+ }
+
   var list = {
     getHead:getHead,
     getTail:getTail,
