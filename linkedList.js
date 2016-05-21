@@ -9,15 +9,31 @@ function linkedListGenerator(){
 
   function getHead(){
     return head;
-
   }
 
   function getTail(){
     return tail;
-
   }
 
-  function add(){
+  function add(value){
+    if (head === null){
+      head = {
+        value: value,
+        next: null
+      };
+      tail = head;
+      return head;
+      }else{
+        tail.next = {
+          value: value,
+          next: null
+        };
+        tail = {
+          value: value,
+          next: null
+        };
+      }
+        return tail;
   }
 
   function remove(){
