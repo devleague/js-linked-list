@@ -17,10 +17,14 @@ function linkedListGenerator(){
   function remove() {
     // body...
   }
+  function get() {
+    // body...
+  }
   return {
     getHead: getHead,
     getTail: getTail,
     add: add,
-    remove: remove
+    remove: remove,
+    get: get
   };
 }
