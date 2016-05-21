@@ -8,7 +8,11 @@ function linkedListGenerator(){
   function getHead() {
       // body...
     }
+  function getTail(argument) {
+    // body...
+  }
   return {
-    getHead: getHead
+    getHead: getHead,
+    getTail: getTail
   };
 }
