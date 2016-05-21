@@ -15,8 +15,25 @@ function linkedListGenerator(){
   function getTail() {
     return tail;
   }
-  function add() {
-    // body...
+  function add(Value) {
+    if (head === null){
+      head = {
+        value: Value,
+        next: null
+      };
+      tail = head;
+      return head;
+    }else{
+      tail.next = {
+        value: Value,
+        next: null
+      };
+      tail = {
+        value: Value,
+        next: null
+      };
+      return tail;
+    }
   }
   function remove() {
     // body...
