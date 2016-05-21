@@ -4,10 +4,14 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
-  var linkedList = {};
+  // private variables
+  var head = null;
+  var tail = null;
+
+  // private methods
   function getHead() {
-      // body...
-    }
+    return head;
+  }
   function getTail() {
     // body...
   }
@@ -23,6 +27,8 @@ function linkedListGenerator(){
   function insert() {
     // body...
   }
+
+  // publicly available
   return {
     getHead: getHead,
     getTail: getTail,
