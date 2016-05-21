@@ -14,8 +14,12 @@ function linkedListGenerator(){
  function getHead(){
   return head;
  }
+ function getTail(){
+  return tail;
+ }
   var list = {
-    getHead:getHead
+    getHead:getHead,
+    getTail:getTail
   };
 
   return list;
