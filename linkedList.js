@@ -32,10 +32,27 @@ function linkedListGenerator(){
     }
     return insert;
  }
+
+  function get(num){
+
+  if(num === 0)
+    return head;
+  var item = head;
+  while(num > 0){
+    if(item.next !== null){
+      item = item.next;
+      num--;
+    }
+    else
+      return false;
+  }
+  return item;
+ }
   var list = {
     getHead:getHead,
     getTail:getTail,
-    add:add
+    add:add,
+    get:get
   };
 
   return list;
