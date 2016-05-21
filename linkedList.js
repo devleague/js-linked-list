@@ -14,9 +14,13 @@ function linkedListGenerator(){
   function add() {
     // body...
   }
+  function remove() {
+    // body...
+  }
   return {
     getHead: getHead,
     getTail: getTail,
-    add: add
+    add: add,
+    remove: remove
   };
 }
