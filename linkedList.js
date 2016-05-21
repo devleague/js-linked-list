@@ -13,7 +13,7 @@ function linkedListGenerator(){
     return head;
   }
   function getTail() {
-    // body...
+    return tail;
   }
   function add() {
     // body...
