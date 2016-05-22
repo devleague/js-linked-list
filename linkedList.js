@@ -71,7 +71,6 @@ function linkedListGenerator(){
       value: value,
       next: nextNode
     };
-    debugger;
     if (number === 0) {
       return head = insertNode;
     } else if (nextNode === false || number < 0) {
