@@ -28,10 +28,7 @@ function linkedListGenerator(){
           value: value,
           next: null
         };
-        tail = {
-          value: value,
-          next: null
-        };
+        tail = tail.next;
       }
         return tail;
   }
@@ -39,8 +36,19 @@ function linkedListGenerator(){
   function remove(){
   }
 
-  function get(){
+  function get(number){
+    var nextNode = head;
+    i = 0;
+    while (i < number){
+      i++;
+      nextNode = nextNode.next;
+      if (nextNode === null){
+        return false;
+      }
+    }
+    return nextNode;
   }
+
 
   function insert(){
   }
