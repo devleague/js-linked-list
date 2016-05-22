@@ -6,29 +6,87 @@
 var linkedListGenerator = function (){
 
   var newLinkedList = {
-    value: null,
+    head: null,
+    tail: null
+  };
+
+  var node = {
+  value: null,
+  next: null
+  };
+
+  function getHead() {
+    return newLinkedList.head;
+  }
+
+  function getTail() {
+    return newLinkedList.tail;
+  }
+
+  function add(value) {
+
+    var newNode = {
+    value: value,
     next: null
-  };
+    }, current = newLinkedList.head;
 
-  newLinkedList.getHead = function (){
-    return newLinkedList.value;
-  };
+    //If linkedList is empty
+    if (newLinkedList.head === null) {
+      newLinkedList.head = newNode;
+      newLinkedList.tail = newNode;
+    }
+    //while linked list is not empty
+    else {
+      // while you have not reached the end
+      while(current.next !== null){
+        current = current.next;
+      }
+      newLinkedList.tail = newNode;
+      current.next = newNode;
+    }
+    return newNode;
+  }
 
-  newLinkedList.getTail = function (){
-    return newLinkedList.value;
-  };
+  function remove(number) {
 
-  newLinkedList.add = function (){
-  };
+  }
 
-  newLinkedList.remove = function (){
-  };
+  /*
+  * Function that takes in number value
+  * and searches for node with same number value
+  * @param number placement of node to be found
+  * @return node that matches with number
+  */
+  function get(number) {
+    var newNode = {
+    value: null,
+    next: null,
+    number: 0
+    }, current = newLinkedList.head;
 
-  newLinkedList.get = function (){
-  };
+    var count = 0;
 
-  newLinkedList.insert = function (){
-  };
+    while(current.next !== null){
+      if (count === number){
+        return current;
+      }
+      count++;
+      current = current.next;
+    }
+    return newNode;
+  }
 
-return newLinkedList;
+  function insert(value, number) {
+
+  }
+
+  return {
+    linkedList: newLinkedList,
+    getHead: getHead,
+    getTail: getTail,
+    add: add,
+    remove: remove,
+    get: get,
+    insert: insert
+  };
 };
