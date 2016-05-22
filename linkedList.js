@@ -39,30 +39,18 @@ function linkedListGenerator(){
   }
   function remove (number) {
     var removeNode = get(number);
-    var oldNode = get(number - 1);
-    debugger;
+    var prevNode = get(number - 1);
     if (number === 0) {
       return head = removeNode.next;
     } else if (removeNode.next === null) {
-      oldNode.next = null;
-      return tail = oldNode;
+      prevNode.next = null;
+      return tail = prevNode;
     } else if (removeNode === false) {
       return false;
     } else {
-    oldNode.next = removeNode.next;
+    prevNode.next = removeNode.next;
     }
-    // while (i <= number) {
-    //   removeNode = removeNode.next;
-    //   nodeNext = removeNode.next;
-    //   if (removeNode === null) {
-    //     return false;
-    //   } else if (i === number) {
-    //     removeNode = nodeNext.next;
-    //   }
-    //   i++;
-    // }
-    console.log('Removing: ', removeNode,'New next: ', oldNode.next);
-    return oldNode;
+    return prevNode;
   }
   function get (number) {
     var getNode = head;
@@ -77,6 +65,18 @@ function linkedListGenerator(){
     return getNode;
   }
   function insert (value, number) {
-
+    var prevNode = get(number - 1);
+    var nextNode = get(number);
+    var insertNode = {
+      value: value,
+      next: nextNode
+    };
+    debugger;
+    if (number === 0) {
+      return head = insertNode;
+    } else if (nextNode === false || number < 0) {
+      return false;
+    }
+    return prevNode.next = insertNode;
   }
 }
