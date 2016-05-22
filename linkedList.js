@@ -6,6 +6,7 @@
 function linkedListGenerator(){
   var head = null;
   var tail = null;
+  var length = 0;
 
   var newLinkedList = {
 
@@ -25,13 +26,28 @@ function linkedListGenerator(){
       if (head === null) {
         head = newNode;
         tail = newNode;
+        length ++;
+      } else {
+        tail.next = newNode;
+        tail = newNode;
       }
-      tail = newNode;
-      return tail;
+      return newNode;
     },
 
-    remove: function() {
-
+    remove: function(index) {
+      var currNode = this.get(index);
+      var prevNode = this.get(index - 1);
+      if (index === 0) {
+        return head = currNode.next;
+      } else if (currNode.next === null) {
+        prevNode.next = null;
+        return tail = prevNode;
+      } else if (currNode === false) {
+        return false;
+      } else {
+        prevNode.next = currNode.next;
+      }
+      return prevNode;
     },
 
     get: function(index) {
@@ -48,8 +64,19 @@ function linkedListGenerator(){
       return currentNode;
     },
 
-    insert: function() {
-
+    insert: function(value, index) {
+      var currNode = this.get(index);
+      var prevNode = this.get(index - 1);
+      var insertNode = {
+        value: value,
+        next: currNode
+      };
+      if (index === 0) {
+        return head = insertNode;
+      } else if (currNode === false || index < 0) {
+        return false;
+      }
+      return prevNode.next = insertNode;
     }
 
   };
