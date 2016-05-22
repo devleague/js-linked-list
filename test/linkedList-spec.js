@@ -176,7 +176,7 @@ describe('Linked List Generator', function() {
     });
 
     describe('takes an argument', function () {
-      it('should find a node by it\'s index in the Linked List', function () {
+      it('should find a node by its index in the Linked List', function () {
         // urlList Tests
         expect(urlList.get(0).value).to.equal('news.ycombinator.com');
         expect(urlList.get(1).value).to.equal('mozilla.org');
@@ -234,7 +234,7 @@ describe('Linked List Generator', function() {
     });
 
     describe('takes an argument', function () {
-      it('should remove a node by it\'s index in the Linked List', function () {
+      it('should remove a node by its index in the Linked List', function () {
         // urlList Tests
         // remove middle node
         urlList.remove(2);
