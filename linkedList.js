@@ -47,15 +47,19 @@ function linkedListGenerator(){
             if(thisNode === null){
               return false;
             }
-            if(length-1 < number || number < 0)
-              return false;
+
+            // if(length-1 < number || number < 0)
+            //   return false;
 
             while(index !== number && thisNode.next !== null){
               prevNode = thisNode;
               thisNode = thisNode.next;
               index++;
             }
-            if(index === 0){
+            if(index !== number && thisNode.next === null){
+              return false;
+            }
+            if(number === 0){
               head = thisNode.next;
             }else if(thisNode.next !== null){
               prevNode.next = thisNode.next;
@@ -73,7 +77,7 @@ function linkedListGenerator(){
           if(length-1 < number || number < 0)
             return false;
           for(index; index < number; index++){
-            if(thisNode.next !== null)
+            // if(thisNode.next !== null)
               thisNode = thisNode.next;
           }
           // while(index !== number && thisNode.next !== null){
@@ -86,7 +90,29 @@ function linkedListGenerator(){
           return thisNode;
     },
     insert: function(value, number){
-
+            var index = 0;
+            var thisNode = head;
+            var insertedNode = {
+                value: value,
+                next: null
+            };
+            var prevNode;
+            while(index !== number && thisNode.next !== null){
+              prevNode = thisNode;
+              thisNode = thisNode.next;
+              index++;
+            }
+            if(index !== number && thisNode.next === null){
+              return false;
+            }
+            if(number === 0){
+              head = insertedNode;
+              insertedNode.next = thisNode;
+            }else{
+              prevNode.next = insertedNode;
+              insertedNode.next = thisNode;
+            }
+            length++;
           },
   };
   return linkedList;
