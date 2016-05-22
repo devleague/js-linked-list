@@ -15,31 +15,34 @@ function linkedListGenerator(){
   function getTail() {
     return tail;
   }
-  function add(Value) {
+  function add(value) {
     if (head === null){
       head = {
-        value: Value,
+        value: value,
         next: null
       };
       tail = head;
       return head;
     }else{
       tail.next = {
-        value: Value,
+        value: value,
         next: null
       };
-      tail = {
-        value: Value,
-        next: null
-      };
+      tail = tail.next;
       return tail;
     }
   }
   function remove() {
     // body...
   }
-  function get() {
-    // body...
+  function get(num) {
+    var currentNode = head;
+    i = 0;
+    while (i < num){
+      currentNode = currentNode.next;
+      i++;
+    }
+    return currentNode;
   }
   function insert() {
     // body...
