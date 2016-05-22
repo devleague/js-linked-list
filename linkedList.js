@@ -10,11 +10,6 @@ var linkedListGenerator = function (){
     tail: null
   };
 
-  var node = {
-  value: null,
-  next: null
-  };
-
   function getHead() {
     return newLinkedList.head;
   }
@@ -26,12 +21,15 @@ var linkedListGenerator = function (){
   function add(value) {
 
     var newNode = {
-    value: value,
-    next: null
-    }, current = newLinkedList.head;
+      value: value,
+      next: null,
+      index: 0
+    };
+
+    var current = newLinkedList.head;
 
     //If linkedList is empty
-    if (newLinkedList.head === null) {
+    if (current === null) {
       newLinkedList.head = newNode;
       newLinkedList.tail = newNode;
     }
@@ -56,28 +54,60 @@ var linkedListGenerator = function (){
   * and searches for node with same number value
   * @param number placement of node to be found
   * @return node that matches with number
+  * @return false node with number index is not found
   */
   function get(number) {
-    var newNode = {
-    value: null,
-    next: null,
-    number: 0
-    }, current = newLinkedList.head;
+    var current = newLinkedList.head;
+    var index = 0;
 
-    var count = 0;
-
+    //Iterate through the list if there is more than 1 node
     while(current.next !== null){
-      if (count === number){
+      //if first index is number
+      if (index === number){
+        //return node
         return current;
       }
-      count++;
+      //add 1 to index
+      index++;
+      //if node was not found in list
+
+      //change node to be checked to next node
       current = current.next;
     }
-    return newNode;
+    //if index isn't equal to number
+    if (index != number) {
+      return false;
+    }
+
+    //return node
+    return current;
   }
 
   function insert(value, number) {
+    var current = newLinkedList.head;
+    var index = 0;
 
+    //Iterate through the list if there is more than 1 node
+    while(current.next !== null){
+      //if first index is number
+      if (index === number){
+        //return node
+        return current;
+      }
+      //add 1 to index
+      index++;
+      //if node was not found in list
+
+      //change node to be checked to next node
+      current = current.next;
+    }
+    //if index isn't equal to number
+    if (index != number) {
+      return false;
+    }
+
+    //return node
+    return current;
   }
 
   return {
