@@ -40,6 +40,10 @@ function linkedListGenerator(){
     i = 0;
     while (i < num){
       currentNode = currentNode.next;
+      if (currentNode === null){
+        currentNode = false;
+        break;
+      }
       i++;
     }
     return currentNode;
