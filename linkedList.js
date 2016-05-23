@@ -73,8 +73,22 @@ function linkedListGenerator(){
     }
     return currentNode;
   }
-  function insert() {
-    // body...
+  function insert(value, num) {
+    var previousNode = get(num - 1);
+    var currentNode = get(num);
+    if (num === 0){
+      head = {
+        value: value,
+        next: currentNode
+      };
+    }else if(currentNode === false || num < 0){
+      return false;
+    }else{
+      previousNode.next = {
+        value: value,
+        next: currentNode
+      };
+    }
   }
 
   // publicly available
