@@ -32,8 +32,33 @@ function linkedListGenerator(){
       return tail;
     }
   }
-  function remove() {
-    // body...
+  function remove(num) {
+    var currentNode = head;
+    var nodeToRemove = null;
+    var nodeBeforeRemove = null;
+    var i = 0;
+
+    if (num === 0){
+      nodeToRemove = head;
+      head = head.next;
+    }
+    while (i < num){
+      nodeBeforeRemove = currentNode;
+      nodeToRemove = currentNode.next;
+      currentNode = currentNode.next;
+      if (nodeToRemove === null){
+        nodeToRemove = false;
+        return nodeToRemove;
+      }
+      i++;
+    }
+    if (nodeToRemove.next === null){
+      nodeBeforeRemove.next = null;
+      tail = nodeBeforeRemove;
+    }else if (num > 0){
+      nodeBeforeRemove.next = nodeToRemove.next;
+    }
+    return nodeToRemove;
   }
   function get(num) {
     var currentNode = head;
