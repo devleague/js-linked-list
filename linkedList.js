@@ -46,36 +46,28 @@ var linkedListGenerator = function (){
   }
 
   function remove(number) {
-    var currentNode = newLinkedList.head;
-    var index = 0;
+    var previousNode = get(number - 1);
+    var currentNode = get(number);
+    var nextNode = get(number + 1);
 
-    var beforeNodeToDelete = null;
-    var nodeToDelete = null;
-    var deletedNode = null;
-    //1st case
-    // if (index != number){
-    //   return false;
-    // }
-
-    //2nd case: first node is removed
-    if (number === 0) {
-      currentNode = currentNode.next;
-      deletedNode = currentNode;
-      currentNode = null;
-      return deletedNode;
+    //If at end of list
+    if (currentNode.next === null){
+      newLinkedList.tail = previousNode;
     }
+
+    //If at head of list
+    if (previousNode === false) {
+      newLinkedList.head = nextNode;
+    }
+
+    //if index of node doesn't exist
+    if (number === false) {
+      return false;
+    }
+
     else {
-      //3rd case: any other node is removed
-      while (index < number) {
-        beforeNodeToDelete = currentNode;
-        nodeToDelete = currentNode.next;
-        index++;
-      }
-      beforeNodeToDelete.next = nodeToDelete.next;
-      deletedNode = nodeToDelete;
-      nodeToDelete = null;
+      previousNode.next = nextNode;
     }
-    return deletedNode;
   }
 
   /*
@@ -110,7 +102,30 @@ var linkedListGenerator = function (){
   }
 
   function insert(value, number) {
+    var previousNode = get(number - 1);
+    var nextNode = get(number);
 
+    var newNode = {
+      value: value,
+      next: null
+    };
+
+    //If at end of list
+    if(nextNode === false){
+      return false;
+    }
+
+    //If at head of list
+    if(previousNode === false){
+      newNode.next = nextNode;
+      newLinkedList.head = newNode;
+    }
+
+    //Insert in between
+    else {
+      newNode.next = nextNode;
+      previousNode.next = newNode;
+    }
   }
 
   return {
