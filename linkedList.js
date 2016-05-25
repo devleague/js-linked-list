@@ -33,7 +33,32 @@ function linkedListGenerator(){
         return tail;
   }
 
-  function remove(){
+  function remove(number){
+    var currNode = head;
+    var removeNode = null;
+    var prevNode = null;
+    var i = 0;
+
+    if (number === 0){
+      removeNode = head;
+      head = head.next;
+    }
+    while (i < number){
+      i++;
+      prevNode = currNode;
+      removeNode = currNode.next;
+      currNode = currNode.next;
+        if (removeNode === null){
+          return false;
+        }
+    }
+    if(currNode && currNode.next === null){
+      prevNode.next = null;
+      tail = prevNode;
+    }else if (number > 0){
+      prevNode.next = removeNode.next;
+    }
+    return removeNode;
   }
 
   function get(number){
