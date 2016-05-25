@@ -75,7 +75,22 @@ function linkedListGenerator(){
   }
 
 
-  function insert(){
+  function insert(value, number){
+    var currNode = get(number);
+    var prevNode = get(number - 1);
+    var insertedNode = {
+      value: value,
+      next: currNode
+    };
+    if (number === 0){
+      head = insertedNode;
+      return head;
+    }else if( number < 0 || currNode === false){
+      return false;
+    }
+    prevNode.next = insertedNode;
+    return prevNode.next;
+
   }
 
     return  {
