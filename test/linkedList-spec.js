@@ -321,7 +321,7 @@ describe('Linked List Generator', function() {
       it('should return `false` if the index given is a value larger than the List\'s length', function () {
 
         // urlList has two items, it's max index value is 1
-        expect(urlList.insert('boingboing.net', 2)).to.be.false;
+        expect(urlList.insert('boingboing.net', 3)).to.be.false;
         expect(urlList.getHead().value).to.be.equal('news.ycombinator.com');
         expect(urlList.get(0).value).to.be.equal('news.ycombinator.com');
         expect(urlList.get(1).value).to.be.equal('icann.org');
