@@ -64,7 +64,7 @@ Takes in a Number value and searches for the Nth node removes it from the list. 
     linkedListExample.remove(3);
 
 ### insert(Value, Number)
-Inserts the specified element at the specified position in this list. Shifts the element currently at that position (if any) and any subsequent elements to the right. Cannot be used to append a node to the end of a list, if attempted, should return `false`.
+Inserts the specified element at the specified position in this list. Shifts the element currently at that position (if any) and any subsequent elements to the right.
 
 ## Getting Started
 1. Fork this repository and clone it from your personal GitHub Account
