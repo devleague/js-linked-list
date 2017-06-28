@@ -1,8 +1,4 @@
-/**
- * @name  linkedListGenerator
- * @description  Main Module
- * @return {Object} an object exposing methods to be used to manipulate a linked list
- */
+/*jshint esversion: 6 */
 
  function linkedListGenerator() {
 
@@ -48,7 +44,7 @@
         testObj = testObj.next;
       }
       return testObj;
-    }
+    };
 
     module.remove = function(number){
 
@@ -75,10 +71,12 @@
 
     };
 
-    module.insert = function(value, number){
+    module.insert = function(value, index){
+      this.getTail();
+      if (index > listLength || index < 0 ){ return false; }
 
-      if (number === 0){
-        list = list;
+      if (index === 0){
+        list = { value : value, next : list };
         return;
       }
 
@@ -86,18 +84,13 @@
       c = list;
       p = list;
 
-      while (counter < number){
+      while (counter < index){
         p = c;
-        if (c.next === null){
-          return false;
-        } else {
-          c = c.next;
-        }
+        c = c.next;
         counter++;
       }
 
-      p.next = c.next;
-
+      p.next = {value : value, next: c};
     };
 
     return  module;
