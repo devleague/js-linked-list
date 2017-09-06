@@ -1,6 +1,5 @@
 var window = window || undefined;
 if (!window) {
-  GLOBAL = window
   var vm = require('vm');
   var fs = require('fs');
   var sinon = require('sinon');
