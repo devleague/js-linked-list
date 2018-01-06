@@ -4,10 +4,9 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator() {
-  let count = 0;
   let head = null;
   let tail = null;
-  let previous;
+
 
   function getHead() {
     return head
@@ -34,41 +33,82 @@ function linkedListGenerator() {
   }
 
   function get(number) {
-    let current = head;
+    let temp = head;
     let index = 0;
-    while (current !== null) {
+    while (temp !== null) {
       if (index === number) {
-        return current
-      } 
+        return temp
+      }
       index++
-      current = current.next
+      temp = temp.next
     }
     return false
   }
 
 
   function remove(number) {
-    console.log('head',head)
     let temp = head;
-    let index = 0;
     let previous;
-    while (temp !== null){
-      if (index === number) {
-      previous = temp;
-      console.log('temp', temp)
-      temp = temp.next;
-      console.log('newTemp', temp)
-      previous.next = temp.next;
-      console.log('previous', previous)
-      return temp
+    //console.log(temp)
+    let index = 0;
+    while (temp !== null) {
+      if (number === 0 && temp.next) {
+        head = temp.next;
+        return head
+      } else if (number === 0) {
+        head = null;
+        return head
+      } else if (index === number && temp.next === null) {
+        previous.next = null;
+        tail = previous
+        return previous
+      } else if (index === number) {
+        previous.next = temp.next;
+        return previous
       }
-      index++
+      index++;
+      previous = temp;
+      temp = temp.next;
     }
     return false
   }
 
-  function insert(value, number) {
+  function insert(info, number) {
+    let temp = head;
+    let previous;
+    let index = 0;
+    let obj = {
+      value: info,
+      next: null
+    }
 
+   // let getNode = get(number)
+
+    while (temp !== null) {
+
+      if (number === 0 && temp.next) {
+        obj.next = temp;
+        head = obj;
+        return obj;
+      } else if (number === 0){
+        obj.next = temp;
+        head = obj;
+        temp.next = null;
+        return obj
+      } else if (index === number && temp.next === null){
+        obj.next = temp;
+        previous.next = obj;
+        return obj;
+      } else if (index === number){
+        obj.next = temp;
+        previous.next = obj;
+        return previous
+      }
+      index++;
+      previous = temp;
+      temp = temp.next;
+    }
+    return false
   }
 
   return {
