@@ -3,25 +3,50 @@
  * @description  Main Module
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
-function linkedListGenerator(){
-  const head = null;
-  const tail = null;
+function linkedListGenerator() {
+  let head = null;
+  let tail = null;
 
-  function getHead(){
+  function getHead() {
     return head;
   };
 
-  function getTail(){
+  function getTail() {
     return tail;
   };
 
-  function add(){};
+  function add(x) {
+    let newNode = {}
+    newNode.value = x;
+    newNode.next = null;
 
-  function remove(){};
+    if (!head) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      tail.next = newNode;
+      tail = newNode;
+    }
+    return tail;
+  };
 
-  function get(){};
+  function remove() { };
 
-  function insert(){};
+  function get(x) {
+    let currentNode = head;
+    let counter = 0;
+    while (counter < x) {
+      if (currentNode.next === null) {
+        return false
+      } else {
+        currentNode = currentNode.next;
+        counter++
+      }
+    }
+    return currentNode;
+  };
+
+  function insert() { };
 
   return {
     getHead: getHead,
