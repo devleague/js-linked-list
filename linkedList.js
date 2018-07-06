@@ -32,13 +32,13 @@ function linkedListGenerator() {
 
   function remove(x) {
     let currentNode = get(x);
-    let previousNode = get(x-1);
-    let nextNode = get(x+1);
+    let previousNode = get(x - 1);
+    let nextNode = get(x + 1);
 
-    if (x === 0){
+    if (x === 0) {
       head = nextNode;
-    } 
-    if (currentNode.next === null){
+    }
+    if (currentNode.next === null) {
       tail = previousNode;
       tail.next = null;
     } else {
@@ -46,7 +46,7 @@ function linkedListGenerator() {
     }
     return false;
   };
-  
+
   function get(x) {
     let currentNode = head;
     let counter = 0;
@@ -61,7 +61,23 @@ function linkedListGenerator() {
     return false;
   };
 
-  function insert() { };
+  function insert(data, x) {
+    let previousNode = get(x - 1);
+    let currentNode = get(x);
+    let newNode = {};
+    newNode.value = data;
+
+    if (!currentNode) {
+      return false;
+    } else if (!previousNode) {
+      newNode.next = head;
+      head = newNode;
+    } else {
+      newNode.next = currentNode;
+      previousNode.next = newNode;
+    }
+  }
+   
 
   return {
     getHead: getHead,
