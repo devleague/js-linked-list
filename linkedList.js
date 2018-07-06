@@ -27,23 +27,38 @@ function linkedListGenerator() {
       tail.next = newNode;
       tail = newNode;
     }
-    return tail;
+    return newNode;
   };
 
-  function remove() { };
+  function remove(x) {
+    let currentNode = get(x);
+    let previousNode = get(x-1);
+    let nextNode = get(x+1);
 
+    if (x === 0){
+      head = nextNode;
+    } 
+    if (currentNode.next === null){
+      tail = previousNode;
+      tail.next = null;
+    } else {
+      previousNode.next = nextNode;
+    }
+    return false;
+  };
+  
   function get(x) {
     let currentNode = head;
     let counter = 0;
-    while (counter < x) {
-      if (currentNode.next === null) {
-        return false
+    while (currentNode && counter <= x) {
+      if (counter === x) {
+        return currentNode;
       } else {
-        currentNode = currentNode.next;
         counter++
+        currentNode = currentNode.next;
       }
     }
-    return currentNode;
+    return false;
   };
 
   function insert() { };
