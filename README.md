@@ -59,7 +59,7 @@ Takes in a Number value and searches for the **Nth node** in a list and returns 
     }
 
 ### remove(Number)
-Takes in a Number value and searches for the Nth node removes it from the list. Should return `false` if the the position is outside the length of the list.
+Takes in a Number value and searches for the Nth node removes it from the list. Should return `false` if the position is outside the length of the list.
 
     linkedListExample.remove(3);
 
